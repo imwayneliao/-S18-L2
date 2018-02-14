@@ -38,13 +38,23 @@
       removeButton.textContent = "V";
       todo.appendChild(removeButton);
       document.getElementById("todolist").appendChild(todo);
+      var color = document.getElementById("importance");
+        if (color[0].checked){
+          todo.style.color="red";
+        } else {
+          todo.style.color="green";
+        }
       document.getElementById("input").value = "";
     }
     
   </script>
 </head>
 <body>
-  <input type="text" id="input">
+  <input type="text" id="input"><br>
+  <form id="importance">
+    <input type="radio" name="重要性" value="red" checked="checked">緊急
+    <input type="radio" name="重要性" value="green">不緊急
+  </form>
   <button onclick="createToDo()">+</button>
   <div id="todolist"></div>
 </body>
