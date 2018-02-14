@@ -25,10 +25,14 @@
       replaceButton.textContent = "R";
       todo.appendChild(replaceButton);
       removeButton.onclick = function() {
-        var x = this.parentNode;
-        x.parentNode.removeChild(x);
-        // 也可以這樣：this.parentNode.parentNode.removeChild(this.parentNode);
-        document.getElementById("input").value = ""; 
+        var ans = confirm("是否確定完成？");
+        if (ans) {
+          var x = this.parentNode;
+          x.parentNode.removeChild(x);
+          // 也可以這樣：this.parentNode.parentNode.removeChild(this.parentNode);
+          document.getElementById("input").value = ""; 
+        }
+       
       }
       removeButton.textContent = "V";
       todo.appendChild(removeButton);
