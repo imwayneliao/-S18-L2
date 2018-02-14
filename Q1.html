@@ -7,7 +7,8 @@
       state = !state;
       image.src = state? "img/on.jpg" : "img/off.jpg";
     }
-    var timeLeft = 5;
+    var timeLeft = 0;
+    var id;
     function countDownTimer(){
       timeLeft=timeLeft-1;
       document.getElementById("timer").innerHTML = timeLeft;
@@ -15,15 +16,25 @@
         document.getElementById("image").src = "img/off.jpg";
         clearInterval(id);
       }
-      document.getElementById("timer").innerHTML = timeLeft;
     }
-    var id = setInterval(countDownTimer, 1000);
+    function startCountDown() {
+      timeLeft = document.getElementById("time-left").value;
+      if (isNaN(timeLeft)){
+        alert("請輸入數字");
+        return;
+      }
+      document.getElementById("timer").innerHTML = timeLeft;
+      id = setInterval(countDownTimer, 1000);
+    }
+    
 
   </script>
 </head>
 <body>
   <img id="image" src="img/on.jpg">
   <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
-  <div id="timer">5</div>
+  <input type="text" id="time-left">
+  <button onclick="startCountDown()">倒數計時</button>
+  <div id="timer">0</div>
 </body>
 </html>
