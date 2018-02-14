@@ -27,9 +27,10 @@
       removeButton.onclick = function() {
         var ans = confirm("是否確定完成？");
         if (ans) {
-          var x = this.parentNode;
-          x.parentNode.removeChild(x);
-          // 也可以這樣：this.parentNode.parentNode.removeChild(this.parentNode);
+          x = this.parentNode;
+          x.removeChild(x.lastChild);
+          x.removeChild(x.lastChild);
+          x.style.color="brown";
           document.getElementById("input").value = ""; 
         }
        
